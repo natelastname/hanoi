@@ -1,0 +1,4 @@
+
+To do a debug build:
+
+make DEBUG=y all
