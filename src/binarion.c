@@ -1,4 +1,6 @@
 
+#include "hanoi.h"
+
 // create a binarion from real/imaginary part
 uint64_t binarion64_t(long long real,long long imag){
 	uint64_t ans = 0x00;
@@ -15,7 +17,7 @@ uint64_t binarion64_t(long long real,long long imag){
 		if( ((quotient_i ^ quotient_r) & 0x01) ){
 			// if here, remainder will be 1
 			ans += (1ULL << i);
-			quotient_r = quotient_r - 1;
+			quotient_r = quotient_r - 1; 
 		}
 
 		// multiply fraction by conjugate of the denominator (d=-1+i)
@@ -27,5 +29,5 @@ uint64_t binarion64_t(long long real,long long imag){
 		quotient_r /= 2LL;
 	}
 	return ans;
-};
+}
 

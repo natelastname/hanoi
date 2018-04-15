@@ -1,29 +1,33 @@
-# Makefile with support for Windows (mingw32) and NIX (clang / gcc)
-
-CC = gcc
+CC = g++
 NAME = hanoi
 SOURCEDIR = src
+TESTDIR = tests
 SOURCES := $(shell find $(SOURCEDIR) -name '*.c')
+TESTSOURCES := $(shell find $(TESTDIR) -name '*.cpp')
+TESTOBJS := main.o testing.o
+OBJFILES := $(patsubst %.c,%.o,$(SOURCES))
 
-CFLAGS =
-CFLAGS += -std=c99
-CFLAGS += -Wshadow -Wall -Wpedantic -Wextra -Wdouble-promotion -Wunused-result
+# 1. build everything in ./src with:
+# gcc -std=c99 -Wall -Wextra -c {*.c} 
+# 2. combine these object files with: 
+# gcc -shared -o libhanoi.so {*.o} -lm
+# 3. build the test suite with:
+# g++ -std=gnu++11 main.cpp testing.cpp -L{directory of .so}
+# 4. Now, provided that hanoi.h gets included correctly, every
+# definition will be defined 
 
-if ${DEBUG}=y
-   CFLAGS += -g
-else
-   # why not O3?
-   CLFAGS += -O2
-endif
+%.o: %.c
+	gcc -std=c99 -c $<
 
+tests: $(NAME)
+	g++ -std=gnu++11 $(TESTSOURCES) -L. -lhanoi
 
-# Get list of object files, with paths
-OBJECTS := $(addprefix $(BUILDDIR)/,$(SOURCES:%.c=%.o))
+$(NAME): $(OBJFILES)
+	gcc -std=c99 -shared -o libhanoi.so $(OBJFILES) -lm
 
-$(BINARY): $(OBJECTS)
-    $(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) -o $(BINARY)
+all: $(NAME)
 
-
-
-hanoi: $(SRCS)
-   $(CC) $(CFLAGS) -o
+clean:
+	rm *.o
+	rm *.so
+	$(NAME)
