@@ -17,17 +17,17 @@ OBJFILES := $(patsubst %.c,%.o,$(SOURCES))
 # definition will be defined 
 
 %.o: %.c
-	gcc -std=c99 -c $<
+	gcc -std=c99 -c -fPIC $<
 
 tests: $(NAME)
 	g++ -std=gnu++11 $(TESTSOURCES) -L. -lhanoi
 
 $(NAME): $(OBJFILES)
-	gcc -std=c99 -shared -o libhanoi.so $(OBJFILES) -lm
+	gcc -std=c99 -shared -fPIC -o libhanoi.so $(notdir $(OBJFILES)) -lm
 
 all: $(NAME)
 
 clean:
-	rm *.o
-	rm *.so
+	rm -r *.o
+	rm -r *.so
 	$(NAME)

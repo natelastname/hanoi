@@ -1,8 +1,4 @@
 
-To do a debug build:
+Introduction:
 
-make DEBUG=y all
-
-To run:
-
-./run.sh
+Hanoi is a C99 library for exotic binary based number systems. It is named after the tower of Hanoi puzzle, which is itself an exotic number system. It includes a Python/C++ based testing library with python reference implementations.

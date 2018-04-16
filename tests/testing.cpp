@@ -79,7 +79,7 @@ uint64_t testing::open_file(const char * file_name,
 		std::cout << "Unable to open " << file_name << std::endl;
 		return 1;
 	} else{
-		std::cout << "Opened " << file_name << std::endl;
+		std::cout << "Running " << file_name << std::endl;
 	}
 	
 	std::string line = "";
@@ -118,9 +118,9 @@ uint64_t testing::open_file(const char * file_name,
 			expected_output = testing::read_binary_string(line);
 
 			uint64_t res = test(args);
-			std::cout << identifier << ":";
 
 			if(res != expected_output){
+			   std::cout << identifier << ":";
 				std::cout << "Fail" << std::endl;
 				std::cout << "Args[0]:"
 				<< testing::binary_string(args[0])
@@ -135,8 +135,7 @@ uint64_t testing::open_file(const char * file_name,
 				<< testing::binary_string(res) 
             << std::endl;
 			} else{
-				std::cout << "Pass" << std::endl;
-				
+				//std::cout << "Pass" << std::endl;
 			}
 		
 			memset(args,0,MAX_PARAMS*sizeof(uint64_t));
