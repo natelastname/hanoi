@@ -2,3 +2,13 @@
 Introduction:
 
 Hanoi is a C99 library for exotic binary based number systems. It is named after the tower of Hanoi puzzle, which is itself an exotic number system. It includes a Python/C++ based testing library with python reference implementations.
+
+This library is intended for fun, experimental mathematics and perhaps niche use cases.
+
+
+
+Supported number systems:
+- Negabinary (base -2)
+- Binarions (base -1+i) (See: "A binary system for complex numbers" - Walter Penney)
+- Base Fibonacci
+- Stern-Brocot rationals

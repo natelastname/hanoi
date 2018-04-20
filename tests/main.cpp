@@ -30,4 +30,6 @@ int main(void){
    testing::open_file("tests/cases/binarion_interpret_r",binarion_interpret_r);
    testing::open_file("tests/cases/binarion_interpret_i",binarion_interpret_i);
 
+   fibonacci_encode(13);
+
 }
