@@ -21,7 +21,7 @@ struct hanoi_complex binarion_decode(uint64_t binarion);
 uint64_t fibonacci_encode(uint64_t n);
 
 // Convert a fibonacci integer into a standard binary integer
-uint64_t fibonacci_decode(uint64_t fib);
+uint64_t fibonacci_decode(uint64_t n);
 
 #endif // HANOI_H
 

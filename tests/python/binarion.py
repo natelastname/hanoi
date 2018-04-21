@@ -1,4 +1,5 @@
 import random
+from binarylib import binary_string
 
 test_count = 500
 test_range = 2048
@@ -59,24 +60,6 @@ def test_python():
         res = encode_binarion([a,b])
         assert decode_binarion(res) == [a,b]
 
-
-# we are assuming that because base -1+i integers give 32 bits
-# real and imaginary precision (python ints are 32 bits)
-def binary_string(integer):    
-    
-    assert type(integer) == int    
-    mask = 1    
-    binary = ""
-    
-    for i in range(0,64):
-        if(integer & mask != 0):
-            binary = "1" + binary
-        else:
-            binary = "0" + binary
-        mask = mask + mask
-        
-    return binary
-
 def gen_tests():
 
     # create tests for constructing binarions
@@ -129,6 +112,7 @@ def gen_tests():
     with open(output_dir+"binarion_interpret_i", "w") as fp:
         fp.write(tests)        
         
+
 test_python()
 gen_tests()
 
