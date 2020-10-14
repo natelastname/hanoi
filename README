@@ -1,3 +1,11 @@
+This is a library that I made when I was in highschool for experimenting with number systems.
+
+The quality of this code is actually decent. It has working tests which all pass.
+
+License: GPLv3.
+
+-----------------------------------------------------------------------------------------------
+
 
 Introduction:
 
@@ -16,4 +24,10 @@ Hanoi is designed to have implemenations that are above all correct.
 To reduce the amount of detail sensitive code, operations with supported number systems are not implemented. Instead, the user is meant to perform calculations using non-exotic representations and then convert to an exotic number system only when the representation matters.
 
 
+To compile, run:
 
+$ make
+
+Once you've compiled, run the tests:
+
+$ ./run.sh
